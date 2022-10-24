@@ -20,12 +20,13 @@ public class MainActivity extends AppCompatActivity implements IClickListener, F
     boolean tabletLayout;
     private Student[] students;
 
+
     public MainActivity (){
         super(R.layout.activity_main);
         frgLista = new FragmentLista();
         frgDetalle = new FragmentDetalle();
         tabletLayout = false;
-
+        //students = frgLista.getStudents();
 
     }
 
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements IClickListener, F
                     .setReorderingAllowed(true)
                     .add(R.id.frgLista, FragmentLista.class,null)
                     .commit();
+
             manager.addFragmentOnAttachListener(this);
 
         }
@@ -52,9 +54,10 @@ public class MainActivity extends AppCompatActivity implements IClickListener, F
         if(fragment.getId() == R.id.frgLista){
             frgLista = (FragmentLista) fragment;
             frgLista.setStudentsListener(this);
+            //students = frgLista.getStudents();
             if(tabletLayout){
                 Bundle bundle = new Bundle();
-                bundle.putSerializable(FragmentDetalle.EXTRATEXTO, frgLista.getStudents()[0]);
+                bundle.putSerializable(FragmentDetalle.EXTRASTUDENT, frgLista.getStudents()[0]);
                 FragmentManager manager = getSupportFragmentManager();
                 manager.beginTransaction().setReorderingAllowed(true)
                         .add(R.id.frgDetalle, FragmentDetalle.class, bundle)
@@ -69,12 +72,13 @@ public class MainActivity extends AppCompatActivity implements IClickListener, F
 
     @Override
     public void onClick(int pos, View view) {
-        this.students = frgLista.getStudents();
+        students = frgLista.getStudents();
+        Student student = students[pos];
         if(tabletLayout){
             frgDetalle.mostrarDetalle(students[pos], view);
         }else{
             Intent i = new Intent(this,DetalleActivity.class);
-            i.putExtra(FragmentDetalle.EXTRATEXTO, students[pos]);
+            i.putExtra(DetalleActivity.EXTRATEXTO, student);
             startActivity(i);
         }
     }

@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class FragmentDetalle extends Fragment {
-    public static final String EXTRATEXTO = "com.jorpelu.fragments.EXTRA_TEXTO";
-//    public static final String EXTRASTUDENT = "com.jorpelu.fragmentStudents.EXTRA_STUDENT";
+//    public static final String EXTRATEXTO = "com.jorpelu.fragments.EXTRA_TEXTO";
+    public static final String EXTRASTUDENT = "com.jorpelu.fragmentStudents.EXTRA_STUDENT";
     private Student student;
 
 
@@ -24,7 +24,7 @@ public class FragmentDetalle extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(getArguments() != null){
-            student = (Student) getArguments().getSerializable(EXTRATEXTO);
+            student = (Student) getArguments().getSerializable(EXTRASTUDENT);
 
         }
     }

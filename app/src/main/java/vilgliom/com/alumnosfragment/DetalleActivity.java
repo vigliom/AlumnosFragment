@@ -6,6 +6,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import java.util.Objects;
+
 public class DetalleActivity extends AppCompatActivity {
     public static final String EXTRATEXTO = "com.jorpelu.fragments.EXTRA_TEXTO";
 
@@ -17,9 +19,9 @@ public class DetalleActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(savedInstanceState==null){
-            Student student = (Student) getIntent().getSerializableExtra(EXTRATEXTO);
+            Student student = (Student) Objects.requireNonNull(getIntent().getSerializableExtra(EXTRATEXTO));
             Bundle bundle = new Bundle();
-            bundle.putSerializable(FragmentDetalle.EXTRATEXTO, student);
+            bundle.putSerializable(FragmentDetalle.EXTRASTUDENT, student);
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction()
                     .setReorderingAllowed(true)
