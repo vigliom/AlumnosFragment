@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">AlumnosFragment</string>
+    <string name="name">Nombre Apellido1 Apellido2</string>
+    <string name="email">emailejemplo@ejmeplo.com</string>
+    <string name="edad">00</string>
+    <string name="asignatura">SDLA</string>
+    <string name="asignatura_detalle">nombre de la asignatura</string>
+    <string name="nota_asignatura">0.00</string>
+</resources>
